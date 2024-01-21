@@ -1,5 +1,5 @@
 //
-//  ApiConstants.swift
+//  Constants.swift
 //  BambuserTest
 //
 //  Created by Lars Andersson on 2024-01-21.
@@ -19,5 +19,4 @@ enum Constants {
     
     ///Cache
     static let cacheInterval: Double = 60
-
 }

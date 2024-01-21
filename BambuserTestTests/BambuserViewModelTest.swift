@@ -26,7 +26,7 @@ final class BambuserViewModelTest: XCTestCase {
         XCTAssertEqual(result, expectedResult.results, "Was: \(result), but should have been \(expectedResult)")
     }
     
-    // Test Errors
+    // Test Service Errors
     func test_characterListViewModel_getAllCharaters_NetworkError_shouldReturnBadResponse() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())

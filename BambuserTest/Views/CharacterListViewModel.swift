@@ -41,7 +41,7 @@ class CharacterListViewModel: ObservableObject {
     private func configureListener() {
         $darkMode
             .sink(receiveValue: { [weak self] mode in
-                guard let self else { return }
+                guard let _ = self else { return }
                 UserDefaults.standard.set(mode == 1 ? true : false, forKey: Constants.darkModeKey)
         }).store(in: &anyCancellables)
     }

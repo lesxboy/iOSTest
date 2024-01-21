@@ -17,7 +17,7 @@ class CharacterListViewModel: ObservableObject {
     @Published var charatersList: [CharacterModel] = []
     @Published var error: NetworkError?
     @Published var searchText = ""
-    @Published var darkMode = UserDefaults.standard.bool(forKey: Constants.darkModeKey) == true ? 1 : 0
+    @Published var darkModePicker = UserDefaults.standard.bool(forKey: Constants.darkModeKey) == true ? 1 : 0
     
     private let service: Servicing
     private var anyCancellables = Set<AnyCancellable>()
@@ -39,7 +39,7 @@ class CharacterListViewModel: ObservableObject {
     }
     
     private func configureListener() {
-        $darkMode
+        $darkModePicker
             .sink(receiveValue: { [weak self] mode in
                 guard let _ = self else { return }
                 UserDefaults.standard.set(mode == 1 ? true : false, forKey: Constants.darkModeKey)

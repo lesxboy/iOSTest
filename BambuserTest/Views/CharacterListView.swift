@@ -13,7 +13,7 @@ struct CharacterListView: View {
     
     var body: some View {
         NavigationStack {
-            Picker("Mode", selection: $viewModel.darkMode) {
+            Picker("Mode", selection: $viewModel.darkModePicker) {
                 Text("Light Mode").tag(0)
                 Text("Dark Mode").tag(1)
             }.pickerStyle(.segmented)

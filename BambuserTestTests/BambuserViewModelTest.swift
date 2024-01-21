@@ -90,7 +90,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestService())
         
         // Act
-        viewModel.darkMode = 0
+        viewModel.darkModePicker = 0
         
         // Assert
         let result = UserDefaults.standard.bool(forKey: "isDarkMode")
@@ -102,7 +102,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestService())
         
         // Act
-        viewModel.darkMode = 1
+        viewModel.darkModePicker = 1
         
         // Assert
         let result = UserDefaults.standard.bool(forKey: "isDarkMode")

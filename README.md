@@ -15,3 +15,8 @@ Bonus/Discussion points
 It will be seen as a bonus if your components and services/utilities are reusable. Making your code reusable by internal teams and external companies will also be a discussion point during the scheduled presentation of your solution.
 Submission instructions
 The solution should ideally be submitted in the form of a git repository, either as a link to a public repository or zipped. In a pinch, we can accept a zip file containing just the code and documentation.
+
+Bonus/Discussion points
+It will be seen as a bonus if your components and services/utilities are reusable. Making your code reusable by internal teams and external companies will also be a discussion point during the scheduled presentation of your solution.
+Submission instructions
+The solution should ideally be submitted in the form of a git repository, either as a link to a public repository or zipped. In a pinch, we can accept a zip file containing just the code and documentation.

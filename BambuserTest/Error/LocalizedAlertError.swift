@@ -20,9 +20,9 @@ struct LocalizedAlertError: LocalizedError {
         underlyingError = error
         
         switch error {
-        case NetworkError.badResponse:
+        case NetworkError.invalidResponse:
             errorDescription = "Network Error"
-        case NetworkError.badUrl:
+        case NetworkError.invalidUrl:
             errorDescription = "Url Error"
         case .invalidData:
             errorDescription = "Data Error"

@@ -20,7 +20,7 @@ class Service: Servicing {
     func getAllCharaters() async throws -> CharactersListModel {
         
         guard let url = apiUrlComponent.url else {
-            throw NetworkError.badUrl
+            throw NetworkError.invalidUrl
         }
         
         var request = URLRequest(url: url)
@@ -29,7 +29,7 @@ class Service: Servicing {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw NetworkError.badResponse
+            throw NetworkError.invalidResponse
         }
         
         do {

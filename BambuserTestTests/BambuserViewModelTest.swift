@@ -12,7 +12,7 @@ import XCTest
 @MainActor
 final class BambuserViewModelTest: XCTestCase {
     
-    // Test Fetch CharatersList
+    /// Test Fetch CharatersList
    func test_characterListViewModel_getAllCharaters_shouldReturnAllCharaters() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestService())
@@ -26,7 +26,7 @@ final class BambuserViewModelTest: XCTestCase {
         XCTAssertEqual(result, expectedResult.results, "Was: \(result), but should have been \(expectedResult)")
     }
     
-    // Test Service Errors
+    /// Test Service Errors
     func test_characterListViewModel_getAllCharaters_NetworkError_shouldReturnBadResponse() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
@@ -35,7 +35,7 @@ final class BambuserViewModelTest: XCTestCase {
         try? await viewModel.getAllCharaters()
         
         // Assert
-        let expectedResult = NetworkError.badResponse
+        let expectedResult = NetworkError.invalidResponse
         let result = viewModel.error
         
         XCTAssertEqual(result, expectedResult, "Was: \(String(describing: result)), but should have been \(expectedResult)")
@@ -51,12 +51,12 @@ final class BambuserViewModelTest: XCTestCase {
         
         // Assert
         let result = viewModel.error
-        let expectedResult = NetworkError.badUrl
+        let expectedResult = NetworkError.invalidUrl
         
         XCTAssertEqual(result, expectedResult, "Was: \(String(describing: result)), but should have been \(expectedResult)")
     }
     
-    // Test Filter
+    /// Test Filter
     func test_characterListViewModel_searchText_filter_shouldReturnEmptyResult() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestService())
@@ -83,7 +83,7 @@ final class BambuserViewModelTest: XCTestCase {
         XCTAssertFalse(result.isEmpty)
     }
     
-    // Test Dark Mode Logic
+    /// Test Dark Mode Logic
     
     func test_characterListViewModel_darkMode_off_filter_shouldReturnDarkModeFalse() async {
         // Arrange
@@ -133,6 +133,6 @@ class MockTestService: Servicing {
 class MockTestServiceWithNetWorkError: Servicing {
     @State private var charactersListModel = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
     func getAllCharaters() async throws -> CharactersListModel {
-        throw NetworkError.badResponse
+        throw NetworkError.invalidResponse
     }
 }

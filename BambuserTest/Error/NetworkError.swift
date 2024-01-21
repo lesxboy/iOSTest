@@ -8,8 +8,9 @@
 import Foundation
 
 enum NetworkError: String, LocalizedError {
-    case badUrl = "Invalid URL"
-    case badResponse = "No Response"
+    //TODO: use string keys so the error can be localized 
+    case invalidUrl = "Invalid URL"
+    case invalidResponse = "No Response"
     case invalidData = "Data corrupt"
     case failedToDecodeResponse = "Failed to decode response"
     var localizedDescription: String { return NSLocalizedString(self.rawValue, comment: "") }

@@ -12,7 +12,7 @@ import SwiftUI
 @MainActor
 class CharacterListViewModel: ObservableObject {
     
-    @AppStorage("isDarkMode",store: UserDefaults.shared) var isDarkMode: Bool?
+    @AppStorage(Constants.darkModeKey,store: UserDefaults.shared) var isDarkMode: Bool?
     @Published var isLoading: Bool = false
     @Published var charatersList: [CharacterModel] = []
     @Published var error: NetworkError?

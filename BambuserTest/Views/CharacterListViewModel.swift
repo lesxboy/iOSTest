@@ -46,6 +46,8 @@ class CharacterListViewModel: ObservableObject {
         }).store(in: &anyCancellables)
     }
     
+    
+    
     func getAllCharaters() async throws {
         
         /// check if list data is preserved in cache

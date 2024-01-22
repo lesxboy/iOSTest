@@ -20,8 +20,7 @@ final class NetworkService: NetworkServiceProtocol {
         do {
             let decoded = try JSONDecoder().decode(T.self, from: data)
             return decoded
-        }
-        catch {
+        } catch {
             throw NetworkError.failedToDecodeResponse
         }
     }

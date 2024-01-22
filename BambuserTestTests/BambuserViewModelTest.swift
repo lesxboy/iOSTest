@@ -15,7 +15,7 @@ final class BambuserViewModelTest: XCTestCase {
     /// Test Fetch CharatersList
    func test_characterListViewModel_getAllCharaters_shouldReturnAllCharaters() async {
         // Arrange
-        let viewModel = CharacterListViewModel(service: MockTestService())
+        let viewModel = CharacterListViewModel(service: MockTestServiceWithResult())
         
         // Act
         try? await viewModel.fetchAllCharaters()
@@ -58,8 +58,9 @@ final class BambuserViewModelTest: XCTestCase {
     
     /// Test Filter
     func test_characterListViewModel_searchText_filter_shouldReturnEmptyResult() async {
+        
         // Arrange
-        let viewModel = CharacterListViewModel(service: MockTestService())
+        let viewModel = CharacterListViewModel(service: MockTestServiceWithResult())
         
         // Act
         try? await viewModel.fetchAllCharaters()
@@ -71,8 +72,9 @@ final class BambuserViewModelTest: XCTestCase {
     }
     
     func test_characterListViewModel_searchText_filter_shouldReturnSearchResult() async {
+        
         // Arrange
-        let viewModel = CharacterListViewModel(service: MockTestService())
+        let viewModel = CharacterListViewModel(service: MockTestServiceWithResult())
         
         // Act
         try? await viewModel.fetchAllCharaters()
@@ -87,7 +89,7 @@ final class BambuserViewModelTest: XCTestCase {
     
     func test_characterListViewModel_darkMode_off_filter_shouldReturnDarkModeFalse() async {
         // Arrange
-        let viewModel = CharacterListViewModel(service: MockTestService())
+        let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
         
         // Act
         viewModel.darkModePicker = 0
@@ -99,7 +101,7 @@ final class BambuserViewModelTest: XCTestCase {
     
     func test_characterListViewModel_darkMode_on_filter_shouldReturnDarkModeTrue() async {
         // Arrange
-        let viewModel = CharacterListViewModel(service: MockTestService())
+        let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
         
         // Act
         viewModel.darkModePicker = 1
@@ -121,18 +123,46 @@ class MockTestUrlComponentService: Service {
     }
 }
 
-/// Mock Service
-class MockTestService: Servicing {
-    @State private var charactersListModel = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
+/// Mock Error Service
+class MockTestServiceWithNetWorkError: Servicing {
+    
+    private let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol = MockNetworkService()) {
+        self.networkService = networkService
+    }
     func getAllCharaters() async throws -> CharactersListModel {
-        return charactersListModel
+        throw NetworkError.invalidResponse
     }
 }
 
-/// Mock Error Service
-class MockTestServiceWithNetWorkError: Servicing {
-    @State private var charactersListModel = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
+/// Mock Service Return Result
+class MockTestServiceWithResult: Servicing {
+    
+    private let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol = MockNetworkService()) {
+        self.networkService = networkService
+    }
     func getAllCharaters() async throws -> CharactersListModel {
-        throw NetworkError.invalidResponse
+        
+        guard let url = URL(string: "test") else {
+            throw NetworkError.invalidUrl
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "GET"
+        return try await networkService.fetch(with: request)
+    }
+}
+
+
+class MockNetworkService: NetworkServiceProtocol {
+    
+    @State private var charactersListModel = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
+    
+    func fetch<T: Decodable>(with request: URLRequest) async throws -> T {
+        return charactersListModel as! T
     }
 }

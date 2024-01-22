@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		707209B92B5F1F7100D72039 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707209B82B5F1F7100D72039 /* NetworkServiceProtocol.swift */; };
+		707209BB2B5F1FC500D72039 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707209BA2B5F1FC500D72039 /* NetworkService.swift */; };
 		708D6F492B5DD17000D5E75E /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D6F482B5DD17000D5E75E /* UserDefaults+Extensions.swift */; };
 		7097DFB12B5D39E800EDB2E1 /* BambuserTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFB02B5D39E800EDB2E1 /* BambuserTestApp.swift */; };
 		7097DFB52B5D39EA00EDB2E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7097DFB42B5D39EA00EDB2E1 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		707209B82B5F1F7100D72039 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		707209BA2B5F1FC500D72039 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		708D6F482B5DD17000D5E75E /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		7097DFAD2B5D39E800EDB2E1 /* BambuserTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BambuserTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7097DFB02B5D39E800EDB2E1 /* BambuserTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambuserTestApp.swift; sourceTree = "<group>"; };
@@ -93,6 +97,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		707209B72B5F1F5800D72039 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				707209B82B5F1F7100D72039 /* NetworkServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		707209BC2B5F1FF200D72039 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				707209BA2B5F1FC500D72039 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		7097DFA42B5D39E800EDB2E1 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +169,8 @@
 		7097DFDA2B5D39F900EDB2E1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				707209BC2B5F1FF200D72039 /* NetworkService */,
+				707209B72B5F1F5800D72039 /* Protocols */,
 				7097DFF92B5D6B5700EDB2E1 /* MockService */,
 				7097DFDC2B5D3ABE00EDB2E1 /* Servicing.swift */,
 				7097DFDE2B5D3BE500EDB2E1 /* Service.swift */,
@@ -334,6 +356,7 @@
 			files = (
 				7097DFF32B5D43C900EDB2E1 /* CharacterListViewModel.swift in Sources */,
 				708D6F492B5DD17000D5E75E /* UserDefaults+Extensions.swift in Sources */,
+				707209BB2B5F1FC500D72039 /* NetworkService.swift in Sources */,
 				7097E00F2B5D884A00EDB2E1 /* CacheEntry.swift in Sources */,
 				7097E0022B5D6EE100EDB2E1 /* Bundle+Extensions.swift in Sources */,
 				7097DFF62B5D4D9600EDB2E1 /* DarkModeViewModifier.swift in Sources */,
@@ -352,6 +375,7 @@
 				7097E0112B5D8A7500EDB2E1 /* CacheImplemntation.swift in Sources */,
 				7097DFE72B5D3FBC00EDB2E1 /* CharacterModel.swift in Sources */,
 				7097DFEF2B5D417600EDB2E1 /* InfoModel.swift in Sources */,
+				707209B92B5F1F7100D72039 /* NetworkServiceProtocol.swift in Sources */,
 				7097DFE42B5D3DFF00EDB2E1 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,11 +11,9 @@ public struct DarkModeViewModifier: ViewModifier {
     
 @AppStorage("isDarkMode") var isDarkMode = true
     
-    public func body(content: Content) -> some View {
-        let result = UserDefaults.standard.bool(forKey: "isDarkMode")
-
-    content
-        .environment(\.colorScheme, isDarkMode ? .dark : .light)
-        .preferredColorScheme(isDarkMode ? .dark : .light)
+    public func body(content: Content) -> some View {        
+        content
+            .environment(\.colorScheme, isDarkMode ? .dark : .light)
+            .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }

@@ -48,24 +48,22 @@ class CharacterListViewModel: ObservableObject {
     
     func fetchAllCharaters() async throws {
         
+        /// check if list data is preserved in cache
+        if let list = await cache.value(forKey: Constants.cacheKey) {
+            ///Load list from cache
+            charatersList = list
+            isLoading = false
+            return
+        }
+        
         do {
             isLoading = true
             let charactersList = try await service.getAllCharaters()
             charatersList = charactersList.results
             isLoading = false
-            
             /// add list data to cache
             await cache.setValue(charactersList.results, forKey: Constants.cacheKey)
         } catch let apiError {
-            
-            /// check if list data is preserved in cache
-            if let list = await cache.value(forKey: Constants.cacheKey) {
-                ///Load list from cache
-                charatersList = list
-                isLoading = false
-                return
-            }
-            
             error = apiError as? NetworkError
             isLoading = false
         }

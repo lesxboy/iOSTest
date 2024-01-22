@@ -18,5 +18,5 @@ enum Constants {
     static let cacheKey = "allCharaters"
     
     ///Cache
-    static let cacheInterval: Double = 1
+    static let cacheInterval = 60.0
 }

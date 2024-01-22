@@ -20,11 +20,7 @@ struct CharacterListView: View {
                 .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
             List(viewModel.searchResults, id: \.self) { character in
                 NavigationLink(character.name, value: character)
-            }.onAppear(perform: {
-                Task{
-                    try await viewModel.fetchAllCharaters()
-                }
-            }).frame(maxWidth: .infinity, maxHeight: .infinity)
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationDestination(for: CharacterModel.self, destination: CharacterDetailView.init)
                     .navigationTitle("Select a character")
                 .scrollContentBackground(.hidden)
@@ -32,7 +28,11 @@ struct CharacterListView: View {
             if viewModel.isLoading {
                 ProgressView()
             }
-        }.searchable(text: $viewModel.searchText, prompt: "Filter characters")
+        }.onAppear(perform: {
+            Task{
+                try await viewModel.fetchAllCharaters()
+            }
+        }).searchable(text: $viewModel.searchText, prompt: "Filter characters")
             .errorAlert(error: $viewModel.error)
     }
 }

@@ -11,8 +11,8 @@ import XCTest
 
 @MainActor
 final class BambuserViewModelTest: XCTestCase {
-    
-    /// Test Fetch CharatersList
+
+    // MARK: - Test Fetch CharatersList
    func test_characterListViewModel_getAllCharaters_shouldReturnAllCharaters() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithResult())
@@ -26,7 +26,7 @@ final class BambuserViewModelTest: XCTestCase {
         XCTAssertEqual(result, expectedResult.results, "Was: \(result), but should have been \(expectedResult)")
     }
     
-    /// Test Service Errors
+    // MARK: - Test Service Errors
     func test_characterListViewModel_getAllCharaters_NetworkError_shouldReturnBadResponse() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
@@ -40,7 +40,6 @@ final class BambuserViewModelTest: XCTestCase {
         
         XCTAssertEqual(result, expectedResult, "Was: \(String(describing: result)), but should have been \(expectedResult)")
     }
-    
     
     func test_characterListViewModel_getAllCharaters_NetworkError_shouldReturnBadUrl() async {
         // Arrange
@@ -56,7 +55,7 @@ final class BambuserViewModelTest: XCTestCase {
         XCTAssertEqual(result, expectedResult, "Was: \(String(describing: result)), but should have been \(expectedResult)")
     }
     
-    /// Test Filter
+    // MARK: - Test Filter
     func test_characterListViewModel_searchText_filter_shouldReturnEmptyResult() async {
         
         // Arrange
@@ -85,8 +84,7 @@ final class BambuserViewModelTest: XCTestCase {
         XCTAssertFalse(result.isEmpty)
     }
     
-    /// Test Dark Mode Logic
-    
+    // MARK: - Test Dark Mode Logic
     func test_characterListViewModel_darkMode_off_filter_shouldReturnDarkModeFalse() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
@@ -112,8 +110,9 @@ final class BambuserViewModelTest: XCTestCase {
     }
 }
 
-/// Mock UrlComponent Service
+// MARK: - Mock UrlComponent Service
 class MockTestUrlComponentService: Service {
+    
     override var apiUrlComponent: URLComponents {
         var components = URLComponents()
         components.scheme = "xxx"
@@ -123,7 +122,7 @@ class MockTestUrlComponentService: Service {
     }
 }
 
-/// Mock Error Service
+// MARK: - Mock Error Service
 class MockTestServiceWithNetWorkError: Servicing {
     
     private let networkService: NetworkServiceProtocol
@@ -131,12 +130,13 @@ class MockTestServiceWithNetWorkError: Servicing {
     init(networkService: NetworkServiceProtocol = MockNetworkService()) {
         self.networkService = networkService
     }
+    
     func getAllCharaters() async throws -> CharactersListModel {
         throw NetworkError.invalidResponse
     }
 }
 
-/// Mock Service Return Result
+// MARK: - Mock Service Return CharactersListModel's
 class MockTestServiceWithResult: Servicing {
     
     private let networkService: NetworkServiceProtocol
@@ -144,6 +144,7 @@ class MockTestServiceWithResult: Servicing {
     init(networkService: NetworkServiceProtocol = MockNetworkService()) {
         self.networkService = networkService
     }
+    
     func getAllCharaters() async throws -> CharactersListModel {
         
         guard let url = URL(string: "test") else {

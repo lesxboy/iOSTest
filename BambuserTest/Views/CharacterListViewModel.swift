@@ -12,7 +12,7 @@ import SwiftUI
 @MainActor
 class CharacterListViewModel: ObservableObject {
     
-    @AppStorage(Constants.darkModeKey,store: UserDefaults.shared) var isDarkMode: Bool?
+    @AppStorage(Constants.darkModeKey, store: UserDefaults.shared) var isDarkMode: Bool?
     @Published var isLoading: Bool = false
     @Published var charatersList: [CharacterModel] = []
     @Published var error: NetworkError?
@@ -60,9 +60,9 @@ class CharacterListViewModel: ObservableObject {
             isLoading = true
             let charactersList = try await service.getAllCharaters()
             charatersList = charactersList.results
-            isLoading = false
             /// add list data to cache
             await cache.setValue(charactersList.results, forKey: Constants.cacheKey)
+            isLoading = false
         } catch let apiError {
             error = apiError as? NetworkError
             isLoading = false

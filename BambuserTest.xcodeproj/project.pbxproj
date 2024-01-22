@@ -118,7 +118,7 @@
 				7097E00D2B5D883800EDB2E1 /* Cache */,
 				7097E00A2B5D7EBD00EDB2E1 /* Error */,
 				7097DFE02B5D3C5100EDB2E1 /* Config */,
-				7097E0002B5D6ED000EDB2E1 /* Extension */,
+				7097E0002B5D6ED000EDB2E1 /* Extensions */,
 				7097DFF42B5D4D6C00EDB2E1 /* ViewModifier */,
 				7097DFE52B5D3F9600EDB2E1 /* Models */,
 				7097DFDB2B5D3A0C00EDB2E1 /* Views */,
@@ -203,14 +203,14 @@
 			path = MockService;
 			sourceTree = "<group>";
 		};
-		7097E0002B5D6ED000EDB2E1 /* Extension */ = {
+		7097E0002B5D6ED000EDB2E1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				7097E0012B5D6EE100EDB2E1 /* Bundle+Extensions.swift */,
 				7097E0082B5D7E6100EDB2E1 /* View+Extensions.swift */,
 				708D6F482B5DD17000D5E75E /* UserDefaults+Extensions.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7097E00A2B5D7EBD00EDB2E1 /* Error */ = {

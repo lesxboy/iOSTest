@@ -20,7 +20,7 @@ actor InMemoryCache<V> {
         cache.removeObject(forKey: key as NSString)
     }
     
-    func removeAllValues(){
+    func removeAllValues() {
         cache.removeAllObjects()
     }
     

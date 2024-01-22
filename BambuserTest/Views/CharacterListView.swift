@@ -17,12 +17,12 @@ struct CharacterListView: View {
                 Text("Light Mode").tag(0)
                 Text("Dark Mode").tag(1)
             }.pickerStyle(.segmented)
-                .padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 40))
+                .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
             List(viewModel.searchResults, id: \.self) { character in
                 NavigationLink(character.name, value: character)
             }.onAppear(perform: {
                 Task{
-                    try await viewModel.getAllCharaters()
+                    try await viewModel.fetchAllCharaters()
                 }
             }).frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationDestination(for: CharacterModel.self, destination: CharacterDetailView.init)

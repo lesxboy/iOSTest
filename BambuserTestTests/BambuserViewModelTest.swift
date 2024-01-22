@@ -18,7 +18,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestService())
         
         // Act
-        try? await viewModel.getAllCharaters()
+        try? await viewModel.fetchAllCharaters()
         
         // Assert
         let expectedResult = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
@@ -32,7 +32,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
         
         // Act
-        try? await viewModel.getAllCharaters()
+        try? await viewModel.fetchAllCharaters()
         
         // Assert
         let expectedResult = NetworkError.invalidResponse
@@ -47,7 +47,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestUrlComponentService())
         
         // Act
-        try? await viewModel.getAllCharaters()
+        try? await viewModel.fetchAllCharaters()
         
         // Assert
         let result = viewModel.error
@@ -62,7 +62,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestService())
         
         // Act
-        try? await viewModel.getAllCharaters()
+        try? await viewModel.fetchAllCharaters()
         viewModel.searchText = "Test Test"
 
         // Assert
@@ -75,7 +75,7 @@ final class BambuserViewModelTest: XCTestCase {
         let viewModel = CharacterListViewModel(service: MockTestService())
         
         // Act
-        try? await viewModel.getAllCharaters()
+        try? await viewModel.fetchAllCharaters()
         viewModel.searchText = "Antenna"
 
         // Assert

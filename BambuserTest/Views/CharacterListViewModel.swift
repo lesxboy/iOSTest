@@ -33,7 +33,7 @@ class CharacterListViewModel: ObservableObject {
         }
     }
     
-    init(service: Servicing){
+    init(service: Servicing = Service()){
         self.service = service
         configureListener()
     }

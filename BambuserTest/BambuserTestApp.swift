@@ -11,7 +11,7 @@ import SwiftUI
 struct BambuserTestApp: App {
     var body: some Scene {
         WindowGroup {
-            CharacterListView(viewModel: CharacterListViewModel(service: Service()))
+            CharacterListView(viewModel: CharacterListViewModel())
                 .modifier(DarkModeViewModifier())
         }
     }

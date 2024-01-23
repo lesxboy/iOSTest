@@ -26,7 +26,7 @@ class CharacterListViewModel: ObservableObject {
     @Published var charatersList: [CharacterModel] = []
     @Published var error: NetworkError?
     @Published var searchText = ""
-    @Published var darkModePicker = UserDefaults.standard.bool(forKey: Constants.darkModeKey) == true ? DarkModeEnum.darkMode.rawValue : DarkModeEnum.lightMode.rawValue
+    @Published var darkModePicker = UserDefaults.standard.bool(forKey: Constants.darkModeKey) == true ? DarkModeEnum.darkMode.tag() : DarkModeEnum.lightMode.tag()
     
     private let service: ApiServiceProtocol
     private var anyCancellables = Set<AnyCancellable>()

@@ -12,6 +12,10 @@ import SwiftUI
 enum DarkModeEnum: Int {
     case lightMode
     case darkMode
+    
+    func tag() -> Int {
+        self.rawValue
+    }
 }
 
 @MainActor

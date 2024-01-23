@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// - Note Mock server
-class MockService: Servicing {
+class MockService: ApiServiceProtocol {
     @State private var charactersListModel = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
     func getAllCharaters() async throws -> CharactersListModel {
         return charactersListModel

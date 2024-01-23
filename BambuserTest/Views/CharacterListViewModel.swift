@@ -24,7 +24,7 @@ class CharacterListViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var darkModePicker = UserDefaults.standard.bool(forKey: Constants.darkModeKey) == true ? DarkModeEnum.darkMode.rawValue : DarkModeEnum.lightMode.rawValue
     
-    private let service: Servicing
+    private let service: ApiServiceProtocol
     private var anyCancellables = Set<AnyCancellable>()
     
     /// - Note Set cache to 60 sec
@@ -38,7 +38,7 @@ class CharacterListViewModel: ObservableObject {
         }
     }
     
-    init(service: Servicing = Service()){
+    init(service: ApiServiceProtocol = ApiService()){
         self.service = service
         configureListener()
     }

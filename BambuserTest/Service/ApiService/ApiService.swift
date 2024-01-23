@@ -1,5 +1,5 @@
 //
-//  Service.swift
+//  ApiService.swift
 //  BambuserTest
 //
 //  Created by Lars Andersson on 2024-01-21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Service: Servicing {
+class ApiService: ApiServiceProtocol {
     
     private let networkService: NetworkServiceProtocol
     

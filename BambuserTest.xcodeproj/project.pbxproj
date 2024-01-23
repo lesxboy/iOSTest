@@ -14,8 +14,8 @@
 		7097DFB52B5D39EA00EDB2E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7097DFB42B5D39EA00EDB2E1 /* Assets.xcassets */; };
 		7097DFB82B5D39EA00EDB2E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7097DFB72B5D39EA00EDB2E1 /* Preview Assets.xcassets */; };
 		7097DFC22B5D39EA00EDB2E1 /* BambuserViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFC12B5D39EA00EDB2E1 /* BambuserViewModelTest.swift */; };
-		7097DFDD2B5D3ABE00EDB2E1 /* Servicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFDC2B5D3ABE00EDB2E1 /* Servicing.swift */; };
-		7097DFDF2B5D3BE500EDB2E1 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFDE2B5D3BE500EDB2E1 /* Service.swift */; };
+		7097DFDD2B5D3ABE00EDB2E1 /* ApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFDC2B5D3ABE00EDB2E1 /* ApiServiceProtocol.swift */; };
+		7097DFDF2B5D3BE500EDB2E1 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFDE2B5D3BE500EDB2E1 /* ApiService.swift */; };
 		7097DFE22B5D3C7E00EDB2E1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFE12B5D3C7E00EDB2E1 /* Constants.swift */; };
 		7097DFE42B5D3DFF00EDB2E1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFE32B5D3DFF00EDB2E1 /* NetworkError.swift */; };
 		7097DFE72B5D3FBC00EDB2E1 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7097DFE62B5D3FBC00EDB2E1 /* CharacterModel.swift */; };
@@ -56,8 +56,8 @@
 		7097DFB72B5D39EA00EDB2E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7097DFBD2B5D39EA00EDB2E1 /* BambuserTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BambuserTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7097DFC12B5D39EA00EDB2E1 /* BambuserViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambuserViewModelTest.swift; sourceTree = "<group>"; };
-		7097DFDC2B5D3ABE00EDB2E1 /* Servicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servicing.swift; sourceTree = "<group>"; };
-		7097DFDE2B5D3BE500EDB2E1 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		7097DFDC2B5D3ABE00EDB2E1 /* ApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceProtocol.swift; sourceTree = "<group>"; };
+		7097DFDE2B5D3BE500EDB2E1 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		7097DFE12B5D3C7E00EDB2E1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7097DFE32B5D3DFF00EDB2E1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7097DFE62B5D3FBC00EDB2E1 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
@@ -100,6 +100,7 @@
 		707209B72B5F1F5800D72039 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7097DFDC2B5D3ABE00EDB2E1 /* ApiServiceProtocol.swift */,
 				707209B82B5F1F7100D72039 /* NetworkServiceProtocol.swift */,
 			);
 			path = Protocols;
@@ -111,6 +112,14 @@
 				707209BA2B5F1FC500D72039 /* NetworkService.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		707209BF2B5FC43800D72039 /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				7097DFDE2B5D3BE500EDB2E1 /* ApiService.swift */,
+			);
+			path = ApiService;
 			sourceTree = "<group>";
 		};
 		7097DFA42B5D39E800EDB2E1 = {
@@ -169,11 +178,10 @@
 		7097DFDA2B5D39F900EDB2E1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				707209BF2B5FC43800D72039 /* ApiService */,
 				707209BC2B5F1FF200D72039 /* NetworkService */,
 				707209B72B5F1F5800D72039 /* Protocols */,
 				7097DFF92B5D6B5700EDB2E1 /* MockService */,
-				7097DFDC2B5D3ABE00EDB2E1 /* Servicing.swift */,
-				7097DFDE2B5D3BE500EDB2E1 /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -360,7 +368,7 @@
 				7097E00F2B5D884A00EDB2E1 /* CacheEntry.swift in Sources */,
 				7097E0022B5D6EE100EDB2E1 /* Bundle+Extensions.swift in Sources */,
 				7097DFF62B5D4D9600EDB2E1 /* DarkModeViewModifier.swift in Sources */,
-				7097DFDF2B5D3BE500EDB2E1 /* Service.swift in Sources */,
+				7097DFDF2B5D3BE500EDB2E1 /* ApiService.swift in Sources */,
 				7097DFE22B5D3C7E00EDB2E1 /* Constants.swift in Sources */,
 				7097DFED2B5D414A00EDB2E1 /* CharactersListModel.swift in Sources */,
 				7097DFB12B5D39E800EDB2E1 /* BambuserTestApp.swift in Sources */,
@@ -369,7 +377,7 @@
 				7097DFEB2B5D406200EDB2E1 /* LocationModel.swift in Sources */,
 				7097DFF12B5D434200EDB2E1 /* CharacterListView.swift in Sources */,
 				7097DFF82B5D55BA00EDB2E1 /* CharacterDetailView.swift in Sources */,
-				7097DFDD2B5D3ABE00EDB2E1 /* Servicing.swift in Sources */,
+				7097DFDD2B5D3ABE00EDB2E1 /* ApiServiceProtocol.swift in Sources */,
 				7097E0092B5D7E6100EDB2E1 /* View+Extensions.swift in Sources */,
 				7097DFE92B5D402600EDB2E1 /* OriginModel.swift in Sources */,
 				7097E0112B5D8A7500EDB2E1 /* CacheImplemntation.swift in Sources */,

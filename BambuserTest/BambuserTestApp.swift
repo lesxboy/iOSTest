@@ -12,7 +12,7 @@ struct BambuserTestApp: App {
     var body: some Scene {
         WindowGroup {
             CharacterListView(viewModel: CharacterListViewModel())
-                .modifier(DarkModeViewModifier())
+                .darkModeModifier()
         }
     }
 }

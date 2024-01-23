@@ -19,4 +19,8 @@ extension View {
             Text(error.recoverySuggestion ?? "")
         }
     }
+    
+    func darkModeModifier() -> some View {
+        modifier(DarkModeViewModifier())
+    }
 }

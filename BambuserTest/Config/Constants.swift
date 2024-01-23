@@ -8,15 +8,16 @@
 import Foundation
 
 enum Constants {
-    ///Api
+    
+    //Api
     static let host = "rickandmortyapi.com"
     static let path = "/api/character"
     static let scheme = "https"
     
-    ///Keys
+    //Keys
     static let darkModeKey = "isDarkMode"
     static let cacheKey = "allCharaters"
     
-    ///Cache
+    //Cache
     static let cacheInterval = 60.0
 }

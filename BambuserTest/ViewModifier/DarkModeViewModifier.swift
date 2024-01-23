@@ -10,7 +10,7 @@ import SwiftUI
 public struct DarkModeViewModifier: ViewModifier {
     
     @AppStorage(Constants.darkModeKey) var isDarkMode = true
-    public func body(content: Content) -> some View {    
+    public func body(content: Content) -> some View {
         content
             .environment(\.colorScheme, isDarkMode ? .dark : .light)
             .preferredColorScheme(isDarkMode ? .dark : .light)

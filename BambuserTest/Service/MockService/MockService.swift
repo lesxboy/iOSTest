@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-/// Mock server
+/// - Note Mock server
 class MockService: Servicing {
     @State private var charactersListModel = Bundle.main.decode(type: CharactersListModel.self, from: "MockJSON.json")
     func getAllCharaters() async throws -> CharactersListModel {

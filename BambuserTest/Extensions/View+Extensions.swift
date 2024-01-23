@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension View {
+    
     func errorAlert(error: Binding<NetworkError?>, buttonTitle: String = "OK") -> some View {
         let localizedAlertError = LocalizedAlertError(error: error.wrappedValue)
         return alert(isPresented: .constant(localizedAlertError != nil), error: localizedAlertError) { _ in

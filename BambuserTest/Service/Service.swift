@@ -8,6 +8,7 @@
 import Foundation
 
 class Service: Servicing {
+    
     private let networkService: NetworkServiceProtocol
     
     var apiUrlComponent: URLComponents {

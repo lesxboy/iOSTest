@@ -22,7 +22,7 @@ class CharacterListViewModel: ObservableObject {
     private let service: Servicing
     private var anyCancellables = Set<AnyCancellable>()
     
-    /// Set cache to 60 sec
+    /// - Note Set cache to 60 sec
     private let cache = InMemoryCache<[CharacterModel]>(expirationInterval: Constants.cacheInterval)
     
     var searchResults: [CharacterModel] {
@@ -38,6 +38,7 @@ class CharacterListViewModel: ObservableObject {
         configureListener()
     }
     
+    // MARK: - Configure
     private func configureListener() {
         $darkModePicker
             .sink(receiveValue: { [weak self] mode in
@@ -46,11 +47,11 @@ class CharacterListViewModel: ObservableObject {
         }).store(in: &anyCancellables)
     }
     
+    // MARK: - Fetch All Charaters from API
     func fetchAllCharaters() async throws {
         
-        /// check if list data is preserved in cache
+        /// - Note check if list data is preserved in cache
         if let list = await cache.value(forKey: Constants.cacheKey) {
-            ///Load list from cache
             charatersList = list
             isLoading = false
             return

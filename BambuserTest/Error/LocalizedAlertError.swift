@@ -12,6 +12,7 @@ struct LocalizedAlertError: LocalizedError {
     let underlyingError: Error
     var errorDescription: String?
     var recoverySuggestion: String?
+    
     init?(error: NetworkError?) {
         
         guard let error else { return nil }

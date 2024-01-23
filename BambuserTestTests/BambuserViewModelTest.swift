@@ -89,10 +89,10 @@ final class BambuserViewModelTest: XCTestCase {
         
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
-        let lightModeTag = DarkModeEnum.lightMode.rawValue
+        let lightModeTag: DarkModeEnum = .lightMode
         
         // Act
-        viewModel.darkModePicker = lightModeTag
+        viewModel.darkModePicker = lightModeTag.rawValue
         
         // Assert
         let result = UserDefaults.standard.bool(forKey: "isDarkMode")
@@ -103,10 +103,10 @@ final class BambuserViewModelTest: XCTestCase {
         
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
-        let darkModeTag = DarkModeEnum.darkMode.rawValue
+        let darkModeTag: DarkModeEnum = .darkMode
 
         // Act
-        viewModel.darkModePicker = darkModeTag
+        viewModel.darkModePicker = darkModeTag.rawValue
         
         // Assert
         let result = UserDefaults.standard.bool(forKey: "isDarkMode")

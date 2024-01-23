@@ -11,11 +11,14 @@ struct CharacterListView: View {
     
     @StateObject var viewModel: CharacterListViewModel
     
+    private let lightModeTag = DarkModeEnum.lightMode.rawValue
+    private let darkModeTag = DarkModeEnum.darkMode.rawValue
+    
     var body: some View {
         NavigationStack {
             Picker("Mode", selection: $viewModel.darkModePicker) {
-                Text("Light Mode").tag(0)
-                Text("Dark Mode").tag(1)
+                Text("Light Mode").tag(lightModeTag)
+                Text("Dark Mode").tag(darkModeTag)
             }.pickerStyle(.segmented)
                 .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
             List(viewModel.searchResults, id: \.self) { character in

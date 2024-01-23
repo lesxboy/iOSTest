@@ -12,7 +12,7 @@ import XCTest
 @MainActor
 final class BambuserViewModelTest: XCTestCase {
 
-    // MARK: - Test Fetch CharatersList
+    // MARK: - Test Fetch All CharatersList
    func test_characterListViewModel_getAllCharaters_shouldReturnAllCharaters() async {
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithResult())
@@ -86,11 +86,13 @@ final class BambuserViewModelTest: XCTestCase {
     
     // MARK: - Test Dark Mode Logic
     func test_characterListViewModel_darkMode_off_filter_shouldReturnDarkModeFalse() async {
+        
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
+        let lightModeTag = DarkModeEnum.lightMode.rawValue
         
         // Act
-        viewModel.darkModePicker = 0
+        viewModel.darkModePicker = lightModeTag
         
         // Assert
         let result = UserDefaults.standard.bool(forKey: "isDarkMode")
@@ -98,11 +100,13 @@ final class BambuserViewModelTest: XCTestCase {
     }
     
     func test_characterListViewModel_darkMode_on_filter_shouldReturnDarkModeTrue() async {
+        
         // Arrange
         let viewModel = CharacterListViewModel(service: MockTestServiceWithNetWorkError())
-        
+        let darkModeTag = DarkModeEnum.darkMode.rawValue
+
         // Act
-        viewModel.darkModePicker = 1
+        viewModel.darkModePicker = darkModeTag
         
         // Assert
         let result = UserDefaults.standard.bool(forKey: "isDarkMode")

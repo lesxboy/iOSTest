@@ -115,7 +115,7 @@ final class BambuserViewModelTest: XCTestCase {
 }
 
 // MARK: - Mock UrlComponent Service
-class MockTestUrlComponentService: Service {
+class MockTestUrlComponentService: ApiService {
     
     override var apiUrlComponent: URLComponents {
         var components = URLComponents()
@@ -127,7 +127,7 @@ class MockTestUrlComponentService: Service {
 }
 
 // MARK: - Mock Error Service
-class MockTestServiceWithNetWorkError: Servicing {
+class MockTestServiceWithNetWorkError: ApiServiceProtocol {
     
     private let networkService: NetworkServiceProtocol
     
@@ -141,7 +141,7 @@ class MockTestServiceWithNetWorkError: Servicing {
 }
 
 // MARK: - Mock Service Return CharactersListModel's
-class MockTestServiceWithResult: Servicing {
+class MockTestServiceWithResult: ApiServiceProtocol {
     
     private let networkService: NetworkServiceProtocol
     
